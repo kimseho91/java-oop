@@ -2,11 +2,13 @@ package com.bitcamp.controllers;
 
 import javax.swing.JOptionPane;
 
-import com.bitcamp.services.MemberService;
+import com.bitcamp.services.AdminService;
 import com.bitcamp.domains.MemberBean;
+import com.bitcamp.serviceimpls.AdminServiceImpl;
+
 public class AdminController {
 	public static void main(String[] args) {
-		MemberService service = new MemberService();
+		AdminService adminservice = new AdminServiceImpl();
 		MemberBean member = null;
 		while(true) {
 			switch (JOptionPane.showInputDialog("0.종료\n " 
@@ -18,20 +20,18 @@ public class AdminController {
 
 				return;
 			case "1":
-				JOptionPane.showMessageDialog(null, service.list());
+				JOptionPane.showMessageDialog(null, adminservice.list());
 				break;
 			case "2":
 				String searchId = JOptionPane.showInputDialog("검색 ID");
-				member = service.findById(searchId);
-				JOptionPane.showMessageDialog(null, member);
+				JOptionPane.showMessageDialog(null, adminservice.findById(searchId));
 				break;
 			case "3":
-				String searchName = JOptionPane.showInputDialog("검색 이름");
-//				member = service.findByName(searchName);
-				JOptionPane.showMessageDialog(null, member);
+				String searchName = JOptionPane.showInputDialog("이름 검색");
+				JOptionPane.showMessageDialog(null, adminservice.findByName(searchName));
 				break;
 			case "4":
-				JOptionPane.showMessageDialog(null, service.countAll());
+				JOptionPane.showMessageDialog(null, adminservice.countAll());
 				break;
 
 			default:

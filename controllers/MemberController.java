@@ -2,12 +2,13 @@ package com.bitcamp.controllers;
 import javax.swing.JOptionPane;
 
 import com.bitcamp.domains.MemberBean;
+import com.bitcamp.serviceimpls.MemberServiceImpl;
 import com.bitcamp.services.MemberService;
 
 public class MemberController {
 
 	public static void main(String[] args) {
-		MemberService service = new MemberService();
+		MemberService service = new MemberServiceImpl();
 		MemberBean member = null;
 		String[] arr = null;
 		String temp = "";
@@ -55,9 +56,9 @@ public class MemberController {
 				break;
 				
 			case "5":
-				String searchId = JOptionPane.showInputDialog("검색 ID");
-				member = service.findById(searchId);
-				JOptionPane.showMessageDialog(null, member);
+				String existId = JOptionPane.showInputDialog("검색 ID");
+//				member = service.findById(searchId);
+				JOptionPane.showMessageDialog(null, service.existId(existId));
 				break;
 				
 			case "6":
